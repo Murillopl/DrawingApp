@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Path
 import android.util.AttributeSet
 import android.view.View
 
@@ -33,11 +34,11 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         drawPaint.style = Paint.Style.STROKE
         drawPaint.strokeJoin = Paint.Join.ROUND
         drawPaint.strokeCap = Paint.Cap.ROUND
+
+        canvasPaint = Paint(Paint.DITHER_FLAG)
         brushSize = 20.toFloat()
     }
 
 
-    internal inner class FingerPath(var color: Int, val brushThicknes: Float) : Path {
-
-    }
+    internal inner class FingerPath(var color: Int, val brushThicknes: Float) : Path()
 }
