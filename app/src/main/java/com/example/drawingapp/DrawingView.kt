@@ -23,6 +23,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     private lateinit var canvas: Canvas
     private lateinit var canvasBitmap: Bitmap
     private var brushSize: Float = 0.toFloat()
+    private val paths = mutableListOf<FingerPath>()
 
     init {
         setUpDrawing()
@@ -60,6 +61,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
             //this event will be fired when the user will pickup the finger from screen
             MotionEvent.ACTION_UP -> {
                 drawPath = FingerPath(color, brushSize)
+                paths.add(drawPath)
             }
 
             else -> return false
@@ -72,6 +74,13 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas?.drawBitmap(canvasBitmap, 0f, 0f, drawPaint)
+
+        for (path in paths) {
+            drawPaint.strokeWidth = path.brushThickness
+            drawPaint.color = path.color
+            canvas.drawPath(path, drawPaint) //drawing path on canvas
+        }
+
         if (!drawPath.isEmpty) {
             drawPaint.strokeWidth = drawPath.brushThickness
             drawPaint.color = drawPath.color
