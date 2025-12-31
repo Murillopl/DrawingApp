@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,142 +7,132 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.drawingapp.DrawingView
-        android:id="@+id/drawing_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/constraint_l"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_l2"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_l1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/linear_l2"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/gallery_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image" />
+
+        <com.example.drawingapp.DrawingView
+            android:id="@+id/drawing_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_l2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@id/constraint_l"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_above="@id/layout_l3"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/purple_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="2dp"
+            android:layout_margin="15dp"
             android:background="@drawable/purple_bg"
-            android:contentDescription="@string/image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/red_button"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:contentDescription="@string/image" />
 
         <ImageButton
             android:id="@+id/red_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="2dp"
+            android:layout_margin="15dp"
             android:background="@drawable/red_bg"
-            android:contentDescription="@string/image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/green_button"
-            app:layout_constraintStart_toEndOf="@id/purple_button" />
+            android:contentDescription="@string/image" />
 
         <ImageButton
             android:id="@+id/green_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="2dp"
+            android:layout_margin="15dp"
             android:background="@drawable/green_bg"
-            android:contentDescription="@string/image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/blue_button"
-            app:layout_constraintStart_toEndOf="@id/red_button" />
+            android:contentDescription="@string/image" />
 
         <ImageButton
             android:id="@+id/blue_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="2dp"
+            android:layout_margin="15dp"
             android:background="@drawable/blue_bg"
-            android:contentDescription="@string/image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/orange_button"
-            app:layout_constraintStart_toEndOf="@id/green_button" />
+            android:contentDescription="@string/image" />
 
         <ImageButton
             android:id="@+id/orange_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="2dp"
+            android:layout_margin="15dp"
             android:background="@drawable/orange_bg"
-            android:contentDescription="@string/image"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/blue_button"
-            app:layout_constraintStart_toEndOf="parent" />
+            android:contentDescription="@string/image" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_l"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_l3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/brush_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:contentDescription="@string/image"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_brush"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/save_button"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:src="@drawable/ic_brush" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/save_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:contentDescription="@string/image"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/gallery_button"
-            app:layout_constraintStart_toEndOf="@id/brush_button" />
+            android:src="@drawable/ic_save" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/gallery_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:contentDescription="@string/image"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_gallery"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/undo_button"
-            app:layout_constraintStart_toEndOf="@id/save_button" />
+            android:src="@drawable/ic_gallery" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/undo_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:contentDescription="@string/image"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_undo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/color_picker_button"
-            app:layout_constraintStart_toEndOf="@id/gallery_button" />
+            android:src="@drawable/ic_undo" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/color_picker_button"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:contentDescription="@string/image"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_color_picker"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/undo_button" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:src="@drawable/ic_color_picker" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
