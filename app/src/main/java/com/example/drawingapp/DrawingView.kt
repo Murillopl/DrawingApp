@@ -103,15 +103,22 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
 
     fun changeBrushSize(newSize: Float) {
         brushSize = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            newSize, resources.displayMetrics
+            TypedValue.COMPLEX_UNIT_DIP, newSize, resources.displayMetrics
         )
         drawPaint.strokeWidth = brushSize
     }
 
-    fun setColor(newColor:String){
+    fun setColor(newColor: String) {
         color = Color.parseColor(newColor)
         drawPaint.color = color
+    }
+
+    fun undoPath() {
+        if (paths.size > 0) {
+            paths.removeAt(paths.size - 1)
+            invalidate()
+            //refreshing the layout to reflect the drawing changes
+        }
     }
 
 
