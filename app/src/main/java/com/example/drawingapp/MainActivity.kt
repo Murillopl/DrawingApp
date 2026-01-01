@@ -3,6 +3,7 @@ package com.example.drawingapp
 import android.app.Dialog
 import android.media.Image
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.SeekBar
@@ -12,10 +13,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var drawingView: DrawingView
     private lateinit var brushButton: ImageButton
+    private lateinit var purpleButton: ImageButton
+    private lateinit var redButton: ImageButton
+    private lateinit var orangeButton: ImageButton
+    private lateinit var greenButton: ImageButton
+    private lateinit var blueButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         brushButton = findViewById(R.id.brush_button)
 
+        purpleButton = findViewById(R.id.purple_button)
+        orangeButton = findViewById(R.id.orange_button)
+        redButton = findViewById(R.id.red_button)
+        greenButton = findViewById(R.id.green_button)
+        blueButton = findViewById(R.id.blue_button)
+
         drawingView = findViewById(R.id.drawing_view)
         drawingView.changeBrushSize(23.toFloat())
 
@@ -31,13 +43,21 @@ class MainActivity : AppCompatActivity() {
             showBrushChooserDialog()
         }
 
+        purpleButton.setOnClickListener(this)
+        greenButton.setOnClickListener(this)
+        redButton.setOnClickListener(this)
+        orangeButton.setOnClickListener(this)
+        blueButton.setOnClickListener(this)
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
     }
-    private fun showBrushChooserDialog(){
+
+    private fun showBrushChooserDialog() {
         val brushDialog = Dialog(this@MainActivity)
         brushDialog.setContentView(R.layout.dialog_brush)
         val seekBarProgress = brushDialog.findViewById<SeekBar>(R.id.dialog_seek_bar)
@@ -63,5 +83,30 @@ class MainActivity : AppCompatActivity() {
             }
         })
         brushDialog.show()
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.purple_button -> {
+                drawingView.setColor("#D14EF6")
+            }
+
+            R.id.red_button -> {
+                drawingView.setColor("#FA5B68")
+            }
+
+            R.id.orange_button -> {
+                drawingView.setColor("#EFB041")
+            }
+
+            R.id.green_button -> {
+                drawingView.setColor("#2DC408")
+            }
+
+            R.id.blue_button -> {
+                drawingView.setColor("#2F6FF1")
+            }
+        }
+
     }
 }
