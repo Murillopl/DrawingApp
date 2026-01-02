@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Drawing App</string>
     <string name="image">image</string>
+    <string name="yes" />
+    <string name="we_need_this_permission_in_order_to_access_the_internal_storage">We need this permission in order to access the internal storage</string>
+    <string name="image_saved_in_gallery">Image saved in gallery!</string>
 </resources>

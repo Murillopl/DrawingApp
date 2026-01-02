@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <FrameLayout
         android:id="@+id/linear_l1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,9 +24,10 @@
         <com.example.drawingapp.DrawingView
             android:id="@+id/drawing_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </FrameLayout>
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
